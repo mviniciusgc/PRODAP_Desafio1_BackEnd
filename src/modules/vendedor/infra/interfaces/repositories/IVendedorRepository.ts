@@ -2,7 +2,7 @@ import { IVendedorDTO } from "../dto/IVendedorDTO";
 
 interface IVendedorRepository {
 
-    calcularSalario(data: IVendedorDTO): Promise<number>;
+    salvarDadosVendedor(data: IVendedorDTO): Promise<IVendedorDTO>;
 
 }
 

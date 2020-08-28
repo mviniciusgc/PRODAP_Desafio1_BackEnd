@@ -4,17 +4,27 @@ import { IVendedorDTO } from "../infra/interfaces/dto/IVendedorDTO";
 
 @injectable()
 class CalcularSalarioVendedorService {
-
+    private comissao: number;
     constructor(
         @inject('VendedorRepository')
         private vendedorRepository: IVendedorRepository,
-    ) { }
+    ) {
+        this.comissao = 0.15;
+    }
 
-    public async execute(data: Omit<IVendedorDTO,'totalSalario'>): Promise<number> {
+    public async execute(data: IVendedorDTO): Promise<number> {
 
-        const totalSalarioVendedor = await this.vendedorRepository.calcularSalario(data);
+        const total = data.salarioFixo + (data.valorTotalVendas * this.comissao);
 
-        return totalSalarioVendedor;
+        data.totalSalario = Math.round(total * 100) / 100;
+
+        const totalSalarioVendedor = await this.vendedorRepository.salvarDadosVendedor(data);
+
+        if (!totalSalarioVendedor.totalSalario) {
+            throw new Error("Valores incorretos");
+        }
+
+        return totalSalarioVendedor.totalSalario;
     }
 }
 
