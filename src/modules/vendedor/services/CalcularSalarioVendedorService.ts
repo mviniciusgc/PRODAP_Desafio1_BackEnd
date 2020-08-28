@@ -1,6 +1,6 @@
 import { injectable, inject } from "tsyringe";
 import { IVendedorRepository } from "../infra/interfaces/repositories/IVendedorRepository";
-import { IVendedorDTO } from "../infra/interfaces/dto/IVendedorDTO";
+import { VendedorDTO } from "../dto/VendedorDTO";
 
 @injectable()
 class CalcularSalarioVendedorService {
@@ -12,7 +12,7 @@ class CalcularSalarioVendedorService {
         this.comissao = 0.15;
     }
 
-    public async execute(data: IVendedorDTO): Promise<number> {
+    public async execute(data: VendedorDTO): Promise<number> {
 
         const total = data.salarioFixo + (data.valorTotalVendas * this.comissao);
 

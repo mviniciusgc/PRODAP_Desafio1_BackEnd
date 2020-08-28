@@ -1,16 +1,16 @@
 import { IVendedorRepository } from "@modules/vendedor/infra/interfaces/repositories/IVendedorRepository";
-import { IVendedorDTO } from "@modules/vendedor/infra/interfaces/dto/IVendedorDTO";
+import { VendedorDTO } from "@modules/vendedor/dto/VendedorDTO";
 
 class VendedorRepository implements IVendedorRepository {
 
 
-    private vendedores: Array<IVendedorDTO>;
+    private vendedores: Array<VendedorDTO>;
 
     constructor() {
         this.vendedores = [];
     }
 
-    public async salvarDadosVendedor(data: IVendedorDTO): Promise<IVendedorDTO> {
+    public async salvarDadosVendedor(data: VendedorDTO): Promise<VendedorDTO> {
 
         this.vendedores.push(data);
 
