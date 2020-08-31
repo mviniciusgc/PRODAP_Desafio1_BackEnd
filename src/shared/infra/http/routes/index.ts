@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { vendedorRouter } from '@modules/vendedor/infra/http/routes/Vendedor.route';
+import { salesmanRouter } from '@modules/salesman/infra/http/routes/Salesman.route';
 
 
 const routes = Router();
-routes.use('/vendedor', vendedorRouter);
+routes.use('/salesman', salesmanRouter);
 
 
 export { routes };
