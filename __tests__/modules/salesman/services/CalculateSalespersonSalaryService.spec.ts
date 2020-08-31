@@ -4,7 +4,7 @@ import { CalculateSalespersonSalaryService } from '@modules/salesman/services/Ca
 import { SalesmanDTO } from '@modules/salesman/dto/SalesmanDTO';
 
 
-describe('Calcular Salario Vendedor', () => {
+describe('Calculate Salesperson Salary', () => {
 
     let fakeSalesmanRepository: SalesmanRepository;
     let calculateSalespersonSalaryService: CalculateSalespersonSalaryService;
@@ -16,7 +16,7 @@ describe('Calcular Salario Vendedor', () => {
         calculateSalespersonSalaryService = new CalculateSalespersonSalaryService(fakeSalesmanRepository);
     })
 
-    it('Deve Calcular o salario do vendedor', async () => {
+    it('it should calculate the seller\'\s salary', async () => {
 
         const salesmanJoao = new SalesmanDTO({ name: 'João', fixedSalary: 500.00, totalSalesValue: 1230.30 })
         const salesmanPedro = new SalesmanDTO({ name: 'Pedro', fixedSalary: 700.00, totalSalesValue: 0.00 })
